@@ -11,6 +11,11 @@ function getRandomInt(max) {
     }
 }
 
+function allElementsTheSame(arr) {
+    const [head, ...tail] = arr;
+    return tail.every((x) => head === x);
+}
+
 // Uses the getRandomInt function to get a number based on the Symbols array length 
 function play() {
     const getRandom = getRandomInt(SYMBOLS.length);
@@ -25,11 +30,14 @@ function play() {
 function display(slots) {
     const formatted = slots.map(slot => SYMBOLS[slot]);
     console.log(formatted);
+    if (allElementsTheSame(slots)) {
+        console.log("$$$ WINNER $$$$");
+    } else {
+        console.log('Unlucky try again');
+    }
 }
 
-// Calling the display() using play() as the parameter 
 function main() {
     display(play());
 }
-
-main();  
+main(); 
