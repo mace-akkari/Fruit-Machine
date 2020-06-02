@@ -1,5 +1,5 @@
 import express from 'express';
-import { isWinner, play } from './slotMachine.js';
+import { isWinner, play } from './app.js';
 
 const PORT = 8080;
 
