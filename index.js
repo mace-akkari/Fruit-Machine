@@ -14,6 +14,8 @@ app.get('/play', (req, res) => {
   res.json(response);
 });
 
+app.use('/', express.static('static'));
+
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
