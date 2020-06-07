@@ -1,7 +1,12 @@
 ul {
-    list-style-type: none;
+    list-style-type: none; 
+    text-align: center;
   }
   .slot0, .slot1, .slot2 {
     font-size: 64px;
     display: inline-block;
+  }
+
+  .result {
+    text-align: center;
   }
