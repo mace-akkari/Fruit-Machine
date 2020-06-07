@@ -18,7 +18,9 @@
             <li class="slot0"></li>
             <li class="slot1"></li>
             <li class="slot2"></li>
+            <li class="result"></li>
         </ul>
+
     </main>
 
 
@@ -43,10 +45,11 @@
         }
 
         play().then((game) => {
-            const { reels } = game;
+            const { reels, win } = game;
             reels.map((reel, i) => {
                 document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
             });
+            document.querySelector('.result').textContent = win ? "You're a winner!" : "Sorry, not this time!";
         });
 
 
