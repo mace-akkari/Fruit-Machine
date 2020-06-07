@@ -3,4 +3,5 @@ ul {
   }
   .slot0, .slot1, .slot2 {
     font-size: 64px;
+    display: inline-block;
   }
