@@ -15,12 +15,12 @@
     </header>
     <main>
         <ul>
-            <li class="slot0"></li>
-            <li class="slot1"></li>
-            <li class="slot2"></li>
+            <li class="slot0">|🔔</li>
+            <li class="slot1">|🔔</li>
+            <li class="slot2">| 🔔|</li>
             <li class="result"></li>
         </ul>
-
+        <button onclick="trigger()">Pull me!</button>
     </main>
 
 
@@ -29,9 +29,9 @@
         const PLAY_URL = '/play';
 
         const SYMBOLS = [
-            '🔔',
-            '🍒',
-            '🍉'
+            '| 🔔',
+            '| 🍒',
+            '| 🍉'
         ];
 
         async function play() {
@@ -44,13 +44,15 @@
             return result;
         }
 
-        play().then((game) => {
+       function trigger() {
+            play().then((game) => {
             const { reels, win } = game;
             reels.map((reel, i) => {
                 document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
             });
             document.querySelector('.result').textContent = win ? "You're a winner!" : "Sorry, not this time!";
-        });
+        })
+    };
 
 
     </script>
