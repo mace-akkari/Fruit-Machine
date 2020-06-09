@@ -1,12 +1,27 @@
-ul {
-    list-style-type: none; 
-    text-align: center;
-  }
-  .slot0, .slot1, .slot2 {
-    font-size: 64px;
-    display: inline-block;
-  }
+body {
 
-  .result {
-    text-align: center;
-  }
+}
+main, header {
+  margin: 0 auto; 
+  width: 500px;
+}
+ul {
+  list-style-type: none;
+  text-align: center;
+  padding: 0px;
+}
+
+.slot-machine {
+  width: 315px;
+}
+
+.slot0, .slot1, .slot2 {
+  font-size: 64px;
+  display: inline-block;
+  border-left: 10px solid black;
+  padding: 12px;
+}
+
+.slot2 {
+  border-right: 10px solid black;
+}

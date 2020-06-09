@@ -14,24 +14,25 @@
         <h1>🎰 Slot Machine 🎰</h1>
     </header>
     <main>
-        <ul>
-            <li class="slot0">|🔔</li>
-            <li class="slot1">|🔔</li>
-            <li class="slot2">| 🔔|</li>
-            <li class="result"></li>
-        </ul>
-        <button onclick="trigger()">Pull me!</button>
+        <div class="slot-machine">
+            <ul>
+                <li class="result">Hit play for a chance to win!</li>
+                <li class="slot0">🍀</li>
+                <li class="slot1">🍀</li>
+                <li class="slot2">🍀</li>
+            </ul>
+            <button class="play-button">Pull me!</button>
+        </div>
     </main>
-
 
     <script>
 
         const PLAY_URL = '/play';
 
         const SYMBOLS = [
-            '| 🔔',
-            '| 🍒',
-            '| 🍉'
+            '🔔',
+            '🍒',
+            '🍉'
         ];
 
         async function play() {
@@ -44,16 +45,20 @@
             return result;
         }
 
-       function trigger() {
-            play().then((game) => {
+        async function trigger() {
+            const game = await play();
             const { reels, win } = game;
             reels.map((reel, i) => {
                 document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
             });
             document.querySelector('.result').textContent = win ? "You're a winner!" : "Sorry, not this time!";
-        })
-    };
+        };
 
+        function setup() {
+            document.querySelector('.play-button').addEventListener('click', trigger);
+        }
+
+        setup();
 
     </script>
 </body>
