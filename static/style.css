@@ -39,6 +39,11 @@ body {
   grid-row: 3 / 4;
   justify-self: center;
   align-self: end;
+  background-color: #9E1219;
+}
+
+.BetAware {
+  width: 100%;
 }
 
 /* Fruit machine */
