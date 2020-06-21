@@ -46,7 +46,7 @@ a {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     justify-self: center;
-    margin-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 .footer {
@@ -63,6 +63,11 @@ a {
 }
 
 /* Fruit machine */
+
+.slot-machine{ 
+  position:relative;
+
+}
 
 .machine-border {
   border: 10px solid black;
@@ -86,6 +91,9 @@ ul {
 
 input.play-button {
   max-width: 21%;
+  position:absolute;
+  bottom:64px;
+  right:-77px;
 
 }
 
