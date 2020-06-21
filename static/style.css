@@ -16,9 +16,9 @@ a {
   color: white;
 }
 
-/* .banner {
-  
-} */
+.banner {
+  border: 5px solid black;
+}
 
 .right-banner {
     background: url("./images/Right-banner.png");
@@ -62,6 +62,13 @@ a {
 }
 
 /* Fruit machine */
+
+.machine-border {
+  border: 10px solid black;
+  padding: 10px;
+  margin-top: 20px;
+}
+
 ul {
     list-style-type: none;
     text-align: center;
@@ -73,9 +80,10 @@ ul {
     display: inline-block;
     border: 10px solid black;
     padding: 12px;
+    background-color: white;
 }
 
-.result, .play-button {
+.result {
     display: flex;
     justify-content: center;
 }
