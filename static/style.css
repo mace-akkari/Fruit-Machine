@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    background-color: #9E1219
 }
 
 .container {
@@ -8,7 +9,6 @@ body {
     grid-template-rows: 20% auto 15%;
     height: 100vh;
     width: auto;
-    background-color: #9E1219;
     color:white;
 }
 
@@ -46,6 +46,7 @@ a {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     justify-self: center;
+    margin-bottom: 50px;
 }
 
 .footer {
@@ -54,7 +55,7 @@ a {
     text-align: center;
     justify-self: center;
     align-self: end;
-    background-color: #9E1219;
+    padding-top: 20px;
 }
 
 .BetAware {
@@ -81,6 +82,11 @@ ul {
     border: 10px solid black;
     padding: 12px;
     background-color: white;
+}
+
+input.play-button {
+  max-width: 21%;
+
 }
 
 .result {
