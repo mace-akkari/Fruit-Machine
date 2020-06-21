@@ -1,67 +1,81 @@
 body {
-  margin: 0px;
-}
-.container{
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: 20% auto 15%;
-  height: 100vh;
-  width: auto;
+    margin: 0px;
 }
 
-.banner {
-  background-color: red;
-}
-.right-banner{
-  grid-column: 1 / 2;
-  grid-row: 1 / 4;
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 20% auto 15%;
+    height: 100vh;
+    width: auto;
+    background-color: #9E1219;
+    color:white;
 }
 
-.left-banner{
-  grid-column: 3 / 4;
-  grid-row: 1 / 4;
+a {
+  color: white;
+}
+
+/* .banner {
+  
+} */
+
+.right-banner {
+    background: url("./images/Right-banner.png");
+    background-size: cover;
+    max-width: 100%;
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
+}
+
+.left-banner {
+    background: url("./images/Slots-cherry.jpg");
+    background-size: cover;
+    max-width: 100%;
+    grid-column: 1 / 2;
+    grid-row: 1 / 4;
 }
 
 .header {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  justify-self: center;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    justify-self: center;
 }
 
 .main-content {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  justify-self: center;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    justify-self: center;
 }
 
 .footer {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-  justify-self: center;
-  align-self: end;
-  background-color: #9E1219;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    text-align: center;
+    justify-self: center;
+    align-self: end;
+    background-color: #9E1219;
 }
 
 .BetAware {
-  width: 100%;
+    width: 100%;
 }
 
 /* Fruit machine */
 ul {
-  list-style-type: none;
-  text-align: center;
-  padding: 0px;
+    list-style-type: none;
+    text-align: center;
+    padding: 0px;
 }
 
-
 .slot0, .slot1, .slot2 {
-  font-size: 64px;
-  display: inline-block;
-  border: 10px solid black;
-  padding: 12px;
+    font-size: 64px;
+    display: inline-block;
+    border: 10px solid black;
+    padding: 12px;
 }
 
 .result, .play-button {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
