@@ -18,14 +18,14 @@
         <main class="main-content">
             <div class="slot-machine">
                 <div class="result">Pull for a chance to win!</div>
-                    <div class="machine-border">
+                <div class="machine-border">
                     <ul>
                         <li class="slot0">🍀</li>
                         <li class="slot1">🍀</li>
                         <li class="slot2">🍀</li>
                     </ul>
                 </div>
-                <div class="play-button"><input type="image" src="images/Slot-handle.png" alt="Submit"></div>
+                <input class="play-button" type="image" src="images/Slot-handle.png" alt="Slot-handle">
             </div>
         </main>
         <div class="banner right-banner"></div>
@@ -69,7 +69,6 @@
         function setup() {
             document.querySelector('.play-button').addEventListener('click', trigger);
         }
-
         setup();
 
     </script>
