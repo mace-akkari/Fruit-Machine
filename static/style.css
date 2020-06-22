@@ -18,20 +18,21 @@ a {
 
 .banner {
   border: 5px solid black;
+  background-size: cover;
+  max-width: 100%;
 }
 
 .right-banner {
-    background: url("./images/Right-banner.png");
-    background-size: cover;
-    max-width: 100%;
     grid-column: 3 / 4;
     grid-row: 1 / 4;
 }
 
+.right-img, .left-img {
+  height: 100%;
+  width: 100%;
+}
+
 .left-banner {
-    background: url("./images/Slots-cherry.jpg");
-    background-size: cover;
-    max-width: 100%;
     grid-column: 1 / 2;
     grid-row: 1 / 4;
 }
@@ -49,7 +50,7 @@ a {
     padding-bottom: 50px;
 }
 
-.footer {
+footer {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
     text-align: center;
@@ -94,8 +95,13 @@ input.play-button {
   position:absolute;
   bottom:64px;
   right:-77px;
-
+  
 }
+
+input.play-button:active {
+  transform: rotate(120deg);
+} 
+
 
 .result {
     display: flex;
