@@ -5,11 +5,20 @@ const PORT = 8080;
 
 const app = express();
 
+const credits = new Map()
+
+// @TODO: TEST STUFF, REMOVE
+const FAKEID = "abcdef";
+credits.set(FAKEID, 10);
+// END
+
+
 app.get('/play', (req, res) => {
   const result = play();
   const response = {
     reels: result,
-    win: isWinner(result)
+    win: isWinner(result),
+    credits: credits.get(FAKEID)
   };
   res.json(response);
 });
@@ -19,3 +28,9 @@ app.use('/', express.static('static'));
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
+
+/*
+1. Have I been here before?
+2 N) Assign a unique identifier & give you a cookie
+2 Y) Use that cookie as a key a data store.
+*/

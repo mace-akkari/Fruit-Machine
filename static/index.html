@@ -58,7 +58,9 @@
         }
 
         async function trigger() {
+            document.querySelector('.play-button').classList.add('active');
             const game = await play();
+            document.querySelector('.play-button').classList.remove('active');
             const { reels, win } = game;
             reels.map((reel, i) => {
                 document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
@@ -67,7 +69,8 @@
         };
 
         function setup() {
-            document.querySelector('.play-button').addEventListener('click', trigger);
+            document.querySelector('.play-button')
+                .addEventListener('mousedown', trigger);
         }
         setup();
 

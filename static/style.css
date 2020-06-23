@@ -98,8 +98,9 @@ input.play-button {
   
 }
 
-input.play-button:active {
-  transform: rotate(120deg);
+input.play-button.active {
+  transform: scaleY(-1);
+  transform-origin: center 131px;
 } 
 
 

@@ -23,4 +23,4 @@ export function play() {
 
 export function isWinner(slots) {
     return allElementsTheSame(slots);
- }
+}
