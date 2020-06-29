@@ -12,4 +12,4 @@ for (let i = 0; i < N; i++) {
 }
 
 console.log(`Number of games: ${N}, Number of wins: ${wins}`);
-console.log(`Ratio: ${(wins/N)}`);
+console.log(`Ratio: ${((wins/N)* 100)}%`);
