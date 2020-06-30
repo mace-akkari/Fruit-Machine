@@ -45,6 +45,7 @@
             '🍒',
             '🍉'
         ];
+        const SELECTOR_PLAY_BUTTON = '.play-button';
 
         async function play() {
             const response = await fetch(PLAY_URL);
@@ -57,12 +58,13 @@
         }
 
         async function trigger() {
-            let gameInProgress = document.querySelector('.play-button').classList.contains('active');
+            const SELECTOR_ACTIVE = 'active';
+            let gameInProgress = document.querySelector(SELECTOR_PLAY_BUTTON).classList.contains(SELECTOR_ACTIVE);
             if(!gameInProgress) {
-                document.querySelector('.play-button').classList.add('active');
+                document.querySelector(SELECTOR_PLAY_BUTTON).classList.add(SELECTOR_ACTIVE);
                 gameInProgress = true;
                 const game = await play();
-                setTimeout(() => { document.querySelector('.play-button').classList.remove('active'); gameInProgress = false }, 500);
+                setTimeout(() => { document.querySelector(SELECTOR_PLAY_BUTTON).classList.remove(SELECTOR_ACTIVE); gameInProgress = false }, 500);
                 const { reels, win } = game;
                 reels.map((reel, i) => {
                     document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
@@ -72,7 +74,7 @@
         };
 
         function setup() {
-            document.querySelector('.play-button')
+            document.querySelector(SELECTOR_PLAY_BUTTON)
                 .addEventListener('mousedown', trigger);
         }
         setup();
