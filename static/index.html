@@ -40,7 +40,6 @@
     <script>
 
         const PLAY_URL = '/play';
-
         const SYMBOLS = [
             '🔔',
             '🍒',
@@ -58,14 +57,18 @@
         }
 
         async function trigger() {
-            document.querySelector('.play-button').classList.add('active');
-            const game = await play();
-            document.querySelector('.play-button').classList.remove('active');
-            const { reels, win } = game;
-            reels.map((reel, i) => {
-                document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
-            });
-            document.querySelector('.result').textContent = win ? "You're a winner!" : "Sorry, not this time!";
+            let gameInProgress = document.querySelector('.play-button').classList.contains('active');
+            if(!gameInProgress) {
+                document.querySelector('.play-button').classList.add('active');
+                gameInProgress = true;
+                const game = await play();
+                setTimeout(() => { document.querySelector('.play-button').classList.remove('active'); gameInProgress = false }, 500);
+                const { reels, win } = game;
+                reels.map((reel, i) => {
+                    document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
+                });
+                document.querySelector('.result').textContent = win ? "You're a winner!" : "Sorry, not this time!";
+            }
         };
 
         function setup() {
