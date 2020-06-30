@@ -14,6 +14,12 @@ credits.set(FAKEID, 10);
 
 
 app.get('/play', (req, res) => {
+  if(credits.get(FAKEID) <= 0) {
+    res.status(404)
+      .json({ error: "insufficient credits" });
+    return;
+  }
+
   const game = play();
   const { win, balance } = getResult(game, credits.get(FAKEID));
   credits.set(FAKEID, balance);
