@@ -1,5 +1,5 @@
 import express from 'express';
-import { isWinner, play } from './app.js';
+import { play, getResult } from './app.js';
 
 const PORT = 8080;
 
@@ -14,11 +14,14 @@ credits.set(FAKEID, 10);
 
 
 app.get('/play', (req, res) => {
-  const result = play();
+  const game = play();
+  const { win, balance } = getResult(game, credits.get(FAKEID));
+  credits.set(FAKEID, balance);
+
   const response = {
-    reels: result,
-    win: isWinner(result),
-    credits: credits.get(FAKEID)
+    reels: game,
+    win,
+    credits: balance
   };
   res.json(response);
 });

@@ -21,6 +21,13 @@ export function play() {
     return slots;
 }
 
-export function isWinner(slots) {
+function isWinner(slots) {
     return allElementsTheSame(slots);
+}
+
+export function getResult(slots, balance) {
+    return {
+        win: isWinner(slots),
+        balance: balance
+    }
 }
