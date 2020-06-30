@@ -26,8 +26,15 @@ function isWinner(slots) {
 }
 
 export function getResult(slots, balance) {
+    const win = isWinner(slots);
+    let newBalance;
+    if(win) {
+        newBalance = balance + 2;
+    } else {
+        newBalance = balance - 1;
+    }
     return {
-        win: isWinner(slots),
-        balance: balance
+        win,
+        balance: newBalance
     }
 }
