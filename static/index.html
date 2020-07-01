@@ -40,12 +40,12 @@
     <script>
 
         const PLAY_URL = '/play';
-
         const SYMBOLS = [
             '🔔',
             '🍒',
             '🍉'
         ];
+        const SELECTOR_PLAY_BUTTON = '.play-button';
 
         async function play() {
             const response = await fetch(PLAY_URL);
@@ -58,18 +58,23 @@
         }
 
         async function trigger() {
-            document.querySelector('.play-button').classList.add('active');
-            const game = await play();
-            document.querySelector('.play-button').classList.remove('active');
-            const { reels, win } = game;
-            reels.map((reel, i) => {
-                document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
-            });
-            document.querySelector('.result').textContent = win ? "You're a winner!" : "Sorry, not this time!";
+            const SELECTOR_ACTIVE = 'active';
+            let gameInProgress = document.querySelector(SELECTOR_PLAY_BUTTON).classList.contains(SELECTOR_ACTIVE);
+            if(!gameInProgress) {
+                document.querySelector(SELECTOR_PLAY_BUTTON).classList.add(SELECTOR_ACTIVE);
+                gameInProgress = true;
+                const game = await play();
+                setTimeout(() => { document.querySelector(SELECTOR_PLAY_BUTTON).classList.remove(SELECTOR_ACTIVE); gameInProgress = false }, 500);
+                const { reels, win } = game;
+                reels.map((reel, i) => {
+                    document.querySelector(`.slot${i}`).textContent = SYMBOLS[reel];
+                });
+                document.querySelector('.result').textContent = win ? "You're a winner!" : "Sorry, not this time!";
+            }
         };
 
         function setup() {
-            document.querySelector('.play-button')
+            document.querySelector(SELECTOR_PLAY_BUTTON)
                 .addEventListener('mousedown', trigger);
         }
         setup();

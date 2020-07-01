@@ -21,6 +21,20 @@ export function play() {
     return slots;
 }
 
-export function isWinner(slots) {
+function isWinner(slots) {
     return allElementsTheSame(slots);
+}
+
+export function getResult(slots, balance) {
+    const win = isWinner(slots);
+    let newBalance;
+    if(win) {
+        newBalance = balance + 2;
+    } else {
+        newBalance = balance - 1;
+    }
+    return {
+        win,
+        balance: newBalance
+    }
 }
