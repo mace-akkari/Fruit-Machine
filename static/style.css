@@ -58,6 +58,21 @@ a {
     padding-bottom: 50px;
 }
 
+.coin {
+  animation: rotation 8s infinite linear;
+  height: auto;
+  width: 7%;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(350deg);
+  }
+}
+
 footer {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
@@ -103,6 +118,7 @@ input.play-button {
   position:absolute;
   bottom:64px;
   right:-77px;
+  outline: none;
   
 }
 

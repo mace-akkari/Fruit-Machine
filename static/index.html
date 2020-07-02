@@ -17,6 +17,9 @@
         </header>
         <main class="main-content">
             <div class="slot-machine">
+                <div class="credit-count">
+                    <p><img class="coin" src="./images/gold-coin.svg">Credit Remaining: </p>
+                </div>
                 <div class="result">Pull for a chance to win!</div>
                 <div class="machine-border">
                     <ul>
@@ -60,7 +63,7 @@
         async function trigger() {
             const SELECTOR_ACTIVE = 'active';
             let gameInProgress = document.querySelector(SELECTOR_PLAY_BUTTON).classList.contains(SELECTOR_ACTIVE);
-            if(!gameInProgress) {
+            if (!gameInProgress) {
                 document.querySelector(SELECTOR_PLAY_BUTTON).classList.add(SELECTOR_ACTIVE);
                 gameInProgress = true;
                 const game = await play();
