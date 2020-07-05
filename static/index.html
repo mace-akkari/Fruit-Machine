@@ -53,7 +53,7 @@
         async function play() {
             const response = await fetch(PLAY_URL);
             if (!response.ok) {
-                console.log('Error playing game');
+                alert('You are out of credit, please top up!');
             }
             const result = await response.json();
 
