@@ -32,6 +32,13 @@ app.get('/play', (req, res) => {
   res.json(response);
 });
 
+app.get('/balance', (req, res) => {
+  const response = {
+    credits: credits.get(FAKEID)
+  };
+  res.json(response);
+});
+
 app.use('/', express.static('static'));
 
 app.listen(PORT, () => {

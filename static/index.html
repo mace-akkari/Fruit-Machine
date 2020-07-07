@@ -44,6 +44,7 @@
     <script>
 
         const PLAY_URL = '/play';
+        const BALANCE_URL = '/balance';
         const SYMBOLS = [
             '🔔',
             '🍒',
@@ -51,16 +52,14 @@
         ];
         const SELECTOR_PLAY_BUTTON = '.play-button';
 
+        function creditCount(balance) {
+            document.querySelector(`.credit-count`).textContent = `You have ${balance} coin(s) remaining`;
+        }     
 
-        fetch(PLAY_URL)
-            .then(res => res.json())
-            .then(credits => alert(response[credits]));
-
-        function creditCount() {
-            document.querySelector(`.credit-count`).textContent = 'You have ' + /* ${} */  'coin(s) remaining';
+        async function getBalance() {
+            const response = await fetch(BALANCE_URL);
+            return await response.json();
         }
-
-        creditCount()
 
         async function play() {
             const response = await fetch(PLAY_URL);
@@ -79,6 +78,7 @@
                 document.querySelector(SELECTOR_PLAY_BUTTON).classList.add(SELECTOR_ACTIVE);
                 gameInProgress = true;
                 const game = await play();
+                creditCount(game.credits);
                 setTimeout(() => { document.querySelector(SELECTOR_PLAY_BUTTON).classList.remove(SELECTOR_ACTIVE); gameInProgress = false }, 500);
                 const { reels, win } = game;
                 reels.map((reel, i) => {
@@ -89,11 +89,13 @@
         };
 
         function setup() {
-            document.querySelector(SELECTOR_PLAY_BUTTON)
-                .addEventListener('mousedown', trigger);
+            getBalance().then((balance) => {
+                creditCount(balance.credits);
+                document.querySelector(SELECTOR_PLAY_BUTTON)
+                    .addEventListener('mousedown', trigger);
+            });
         }
         setup();
-
     </script>
 </body>
 
