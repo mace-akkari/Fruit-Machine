@@ -30,10 +30,10 @@ function playTillBust() {
   return plays;
 }
 
-const n = 1000;
+const n = 100000;
 const results = [];
 for(let i = 0; i < n; i++) {
   results.push(playTillBust());
 }
 const sum = results.reduce((a,c) => a + c ,0);
-console.log(sum/n)
+console.log(`games played beofre you are broke ${Math.floor(sum/n)}`)
