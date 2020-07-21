@@ -1,28 +1,42 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import { play, getResult } from './app.js';
+import { createHash } from 'crypto';
 
 const PORT = 8080;
 
 const app = express();
 
-const credits = new Map()
+const credits = new Map();
 
-// @TODO: TEST STUFF, REMOVE
-const FAKEID = "abcdef";
-credits.set(FAKEID, 10);
-// END
+// Very insecure id generation.
+function generateInsecureId() {
+  return createHash('sha256').update(Math.random().toString()).digest('hex');
+}
 
+app.use(cookieParser());
+app.use((req, res, next) => {
+  if(!req.cookies.fruitmachine) {
+    const hash = generateInsecureId();
+    res.cookie('fruitmachine', hash, {
+      httpOnly: true
+    });
+    credits.set(hash, 10);
+  }
+  res.locals.id = req.cookies.fruitmachine;
+  next();
+});
 
 app.get('/play', (req, res) => {
-  if(credits.get(FAKEID) <= 0) {
+  if(credits.get(res.locals.id) <= 0) {
     res.status(404)
       .json({ error: "insufficient credits" });
     return;
   }
 
   const game = play();
-  const { win, balance } = getResult(game, credits.get(FAKEID));
-  credits.set(FAKEID, balance);
+  const { win, balance } = getResult(game, credits.get(res.locals.id));
+  credits.set(res.locals.id, balance);
 
   const response = {
     reels: game,
@@ -34,7 +48,7 @@ app.get('/play', (req, res) => {
 
 app.get('/balance', (req, res) => {
   const response = {
-    credits: credits.get(FAKEID)
+    credits: credits.get(res.locals.id)
   };
   res.json(response);
 });
