@@ -36,4 +36,4 @@ for(let i = 0; i < n; i++) {
   results.push(playTillBust());
 }
 const sum = results.reduce((a,c) => a + c ,0);
-console.log(`games played beofre you are broke ${Math.floor(sum/n)}`)
+console.log(`games played before you are broke ${Math.floor(sum/n)}`)

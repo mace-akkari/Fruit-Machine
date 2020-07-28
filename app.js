@@ -28,14 +28,18 @@ export function play() {
 
 function calculateNewBalance(slots, balance) {
     let newBalance;
-    if(allElementsTheSame(slots)) {
-        newBalance = balance + 2;
-    } else if(arraysTheSame(slots.slice(0, 2), [0,0])) {
-        newBalance = balance + 1;
-    } else if(arraysTheSame(slots.slice(0, 2), [1,1])) {
-        newBalance = balance;
-    } else {
-        newBalance = balance - 1;
+    switch(true) {
+        case allElementsTheSame(slots):
+            newBalance = balance + 2;
+            break;
+        case arraysTheSame(slots.slice(0, 2), [0,0]):
+            newBalance = balance + 1;
+            break;
+        case arraysTheSame(slots.slice(0, 2), [1,1]):
+            newBalance = balance;
+            break;
+        default:
+            newBalance = balance - 1;
     }
     return newBalance;
 }
